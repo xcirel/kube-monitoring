@@ -1,0 +1,40 @@
+# values-staging.yaml
+prometheus:
+  prometheusSpec:
+    scrapeInterval: 30s
+    retention: 10d
+    resources:
+      requests:
+        memory: "512Mi"
+        cpu: "500m"
+      limits:
+        memory: "1Gi"
+        cpu: "1"
+
+alertmanager:
+  enabled: true
+  alertmanagerSpec:
+    resources:
+      requests:
+        memory: "256Mi"
+        cpu: "250m"
+      limits:
+        memory: "512Mi"
+        cpu: "500m"
+
+grafana:
+  enabled: true
+  adminPassword: "staging-admin"
+  resources:
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+
+nodeExporter:
+  enabled: true
+
+kubeStateMetrics:
+  enabled: true

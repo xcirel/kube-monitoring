@@ -1,0 +1,24 @@
+# kube-prometheus-stack.yaml
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kube-prometheus-stack
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/xcirel/kube-monitoring.git
+    path: values
+    targetRevision: main
+    helm:
+      valueFiles:
+        - values/staging.yaml
+  destination:
+    server: https://976da9e3-5547-4ab4-9bb2-4bcabdbd8e66.us-mia-1-gw.linodelke.net:443
+    namespace: monitoring
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - CreateNamespace=true
