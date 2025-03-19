@@ -14,6 +14,9 @@ spec:
     server: https://976da9e3-5547-4ab4-9bb2-4bcabdbd8e66.us-mia-1-gw.linodelke.net:443
     namespace: monitoring
   syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+    - ServerSideApply=true
     automated:
       prune: true
       selfHeal: true
